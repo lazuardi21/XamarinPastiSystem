@@ -1,0 +1,30 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:App1.ViewModels"
+             x:Class="App1.Views.MoviesPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:MovieViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <!-- Define your UI elements here -->
+        <ListView ItemsSource="{Binding Movies}"
+                  HasUnevenRows="true"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!-- Define how each movie item is displayed -->
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Title}" FontAttributes="Bold" />
+                            <Label Text="{Binding ReleaseDate}" />
+                            <!-- Add more bindings for other movie properties -->
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

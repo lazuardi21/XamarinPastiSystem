@@ -1,0 +1,34 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:App1.ViewModels"
+             x:Class="App1.Views.MovieDetailsPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:MovieDetailsViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <!-- Define your UI elements here -->
+        <Label Text="{Binding Movie.Title}" FontAttributes="Bold" />
+        <Label Text="{Binding Movie.Overview}" />
+        <!-- Add more bindings for other movie details -->
+
+        <ListView ItemsSource="{Binding Reviews}"
+                  HasUnevenRows="true"
+                  SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!-- Define how each review item is displayed -->
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Author}" FontAttributes="Bold" />
+                            <Label Text="{Binding Content}" />
+                            <!-- Add more bindings for other review properties -->
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
